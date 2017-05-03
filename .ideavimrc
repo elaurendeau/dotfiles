@@ -1,0 +1,63 @@
+set nocompatible
+set wildmenu
+set showcmd
+set hlsearch
+set encoding=utf-8
+set scrolloff=5
+set ignorecase
+set smartcase
+set backspace=indent,eol,start
+set autoindent
+set showmode
+set nostartofline
+set ruler
+set laststatus=2
+set confirm
+set visualbell
+set mouse=a
+set number
+set relativenumber
+set notimeout ttimeout ttimeoutlen=200
+set shiftwidth=2
+set tabstop=2
+map Y y$
+nnoremap <C-L> :nohl<CR><C-L>
+syntax on
+let mapleader = " "
+nnoremap <leader>s :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap ; :
+nnoremap : ;
+nnoremap ` '
+nnoremap ' `
+nnoremap <leader>v V`]
+inoremap jj <ESC>
+nnoremap <Leader>w <C-w>v<C-w>l
+filetype plugin indent on
+" Json beautify
+nnoremap <leader>m :set syntax=json<cr>:execute '%! python -m json.tool'<cr>
+
+" Splits keybinds
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+inoremap <A-h> <ESC><C-w>hi
+inoremap <A-j> <ESC><C-w>ji
+inoremap <A-k> <ESC><C-w>ki
+inoremap <A-l> <ESC><C-w>li
+nnoremap <leader>T :enew<cr>
+nnoremap <leader>l :bnext<cr>
+nnoremap <leader>h :bprevious<cr>
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>
+nnoremap j gj
+nnoremap k gk
+nnoremap <silent> <C-S> :<C-u>Update<CR>
+nnoremap <A-t>     :tabnew<CR>
+inoremap <A-t>     <Esc>:tabnew<CR>
+setlocal foldmethod=indent
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
+:map <F4> <C-W>w
+colorscheme koehler

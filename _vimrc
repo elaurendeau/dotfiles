@@ -164,15 +164,6 @@ vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
 
-" Make ; act as :, one less key to execute commands!
-nnoremap ; :
-" Swap : to keep access to the ; command
-nnoremap : ;
-
-" Marks: Swap ` and ', to use ' to go to the right collumn.
-nnoremap ` '
-nnoremap ' `
-
 " Leader + v will select the previously pasted text
 nnoremap <leader>v V`]
 
@@ -216,23 +207,19 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/vim-easyoperator-line'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'sjl/gundo.vim'
-Plugin 'mbadran/headlights'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'StanAngeloff/php.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'majutsushi/tagbar'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'bdauria/angular-cli.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'leafgarland/typescript-vim'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'Shougo/denite.nvim'
 Plugin 'Shougo/unite.vim'
 Plugin 'artur-shaik/vim-javacomplete2'
@@ -347,13 +334,6 @@ nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
 
-"Fold by indent
-setlocal foldmethod=indent
-
-"Automatic folding 
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
-
 "Tagbar mapping
 nmap <F3> :TagbarToggle<CR>
 
@@ -367,5 +347,8 @@ colorscheme koehler
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9001
 
-"YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
+let g:statline_syntastic = 0
+
+" auto start nerdtree when no files are specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif

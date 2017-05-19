@@ -352,3 +352,10 @@ let g:statline_syntastic = 0
 " auto start nerdtree when no files are specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+nnoremap <Leader>j :m+
+
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l

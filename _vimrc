@@ -1,3 +1,6 @@
+" start GVIM as full screen
+autocmd GUIEnter * simalt ~x
+
 " Avoid the first "Press enter to continue" screen
 command! -nargs=1 Silent
 \ | execute ':silent !'.<q-args>
@@ -195,8 +198,8 @@ inoremap <C-v> <Esc>pi
 inoremap <C-z> <Esc>ui
 
 "Vundle content
-set rtp+=~/vimfiles/bundle/Vundle.vim
-call vundle#rc("~/vimfiles/bundle/")
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc("~/.vim/bundle/")
 call vundle#begin()
 
 Plugin 'mileszs/ack.vim'
@@ -285,9 +288,7 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 nmap <F2> :NERDTreeToggle<CR>
 let g:NERDTreeMapPreview="<F3>"
 
-"Syntastic (Syntax problems highlighting)
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -359,3 +360,4 @@ inoremap <A-h> <C-o>h
 inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
 inoremap <A-l> <C-o>l
+

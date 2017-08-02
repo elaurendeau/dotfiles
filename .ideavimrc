@@ -39,42 +39,38 @@ nnoremap U <C-r>
 
 "global
 nnoremap <Leader>; :action CommentByLineComment<CR>
-nnoremap <Leader><Tab> :action Switcher<CR>
 nnoremap <Leader>! :action ActivateTerminalToolWindow<CR>
 
 "error section
 "- also triggers the Error Description popup
 nnoremap <Leader>en :action GotoNextError<CR> :action ShowErrorDescription<CR>
+nnoremap <Leader>ee :action GotoNextError<CR> :action ShowErrorDescription<CR>
 nnoremap <Leader>eN :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
 nnoremap <Leader>ep :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
 
 "compile
 nnoremap <Leader>cf :action Compile<CR>
-nnoremap <Leader>cc :action CompileProject<CR>
+nnoremap <Leader>cp :action CompileProject<CR>
+"refactor
+nnoremap <Leader>rf :action RenameFile<CR>
 
-"file
+"find
+nnoremap <Leader>fp :action FileStructurePopup<CR>
 nnoremap <Leader>ft :action ActivateProjectToolWindow<CR>
 nnoremap <Leader>ff :action GotoFile<CR>
-nnoremap <Leader>fl :action GotoFile<CR>
 nnoremap <Leader>fr :action RecentFiles<CR>
-nnoremap <Leader>fR :action RenameFile<CR>
 nnoremap <Leader>fg :action FindInPath<CR>
-nnoremap <Leader>fb :action ToggleBookmark<CR>
-nnoremap <Leader>fB :action ShowBookmarks<CR>
-"- intellij settings
-nnoremap <Leader>fe :action ShowSettings<CR>
 nnoremap <Leader>fo :action ShowFilePath<CR>
-"- Require File Name Grobber plugin
-nnoremap <Leader>fy :action CopyFileName<CR>
+"bookmark
+nnoremap <Leader>bb :action ToggleBookmark<CR>
+nnoremap <Leader>bB :action ShowBookmarks<CR>
+"- intellij settings
+nnoremap <Leader>s :action ShowSettings<CR>
 
 "git
 "- git blame
 nnoremap <Leader>gb :action Annotate<CR>
 nnoremap <Leader>gc :action Git.Branches<CR>
 
-"quit
-nnoremap <Leader>q :action HideActiveWindow<CR>
-
 "jump/join/split
-nnoremap <Leader>jf :action FileStructurePopup<CR>
 nnoremap <Leader>jj :action AceAction<CR>

@@ -1,0 +1,125 @@
+:set scrolloff=5
+
+:set hlsearch
+:set ignorecase
+:set autoindent
+:set smartcase
+:set startnormalmode
+:set imdisable
+
+
+"Alt + movement in insert mode will move
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
+
+" easy system clipboard copy/paste
+noremap <SPACE>y "*y
+noremap <SPACE>Y "*Y
+noremap <SPACE>p "*p
+noremap <SPACE>P "*P
+
+" Jump to beginning and end of lines easier. From http://vimbits.com/bits/16
+nnoremap H ^
+nnoremap L $
+
+"Remap U to redo (easier than C-r)
+nnoremap U <C-r>
+
+
+"global
+eclipseaction toggleComment org.eclipse.jdt.ui.edit.text.java.toggle.comment
+nnoremap <SPACE>; :toggleComment<cr>
+vnoremap <SPACE>; :toggleComment<cr>
+
+"open terminal
+eclipseaction newCmdLine org.eclipse.tm.terminal.view.ui.command.launchToolbar
+nnoremap <SPACE>! :newCmdLine<cr>
+
+"action window
+eclipseaction actionWindow org.eclipse.ui.window.quickAccess
+nnoremap <SPACE>a :actionWindow<cr>
+
+eclipseuiaction eclipseshowdoc org.eclipse.ui.edit.text.showInformation
+nnoremap <SPACE>i :eclipseshowdoc<cr>
+
+" ------ find
+
+"next error
+eclipseaction nextError org.eclipse.ui.navigate.next
+nnoremap <SPACE>ee :nextError<cr> :eclipseshowdoc<cr>
+nnoremap <SPACE>en :nextError<cr> <ESC>
+
+eclipseaction previousError org.eclipse.ui.navigate.previous
+nnoremap <SPACE>eE :previousError<cr> :eclipseshowdoc<cr>
+nnoremap <SPACE>eN :previousError<cr> <ESC>
+
+
+"goto package
+
+" ------- refactor section
+"quickfix
+eclipseaction quickfix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
+nnoremap <SPACE>rq :quickfix<cr>
+
+"autoimport
+eclipseaction autoimport org.eclipse.jdt.ui.edit.text.java.organize.imports
+nnoremap <SPACE>ri :autoimport<cr>
+
+" --------- find
+"implementation
+eclipseuiaction findImplementation org.eclipse.jdt.ui.edit.text.java.open.implementation
+nnoremap <SPACE>fi :findImplementation<cr>
+
+eclipseuiaction findSuperImplementation org.eclipse.jdt.ui.edit.text.java.open.super.implementation
+nnoremap <SPACE>fsi :findSuperImplementation<cr>
+
+eclipseuiaction findDeclaration org.eclipse.jdt.ui.edit.text.java.open.editor
+nnoremap <SPACE>fd :findDeclaration<cr>
+
+" find grep in files
+eclipseuiaction fileGrep org.eclipse.search.ui.openFileSearchPage
+nnoremap <SPACE>fg :fileGrep<cr>
+
+"find text in
+eclipseuiaction textGrepProject org.eclipse.search.ui.performTextSearchProject
+vnoremap <SPACE>ftp :textGrepProject<cr>
+
+eclipseuiaction textGrepWorkspace org.eclipse.search.ui.performTextSearchWorkspace
+vnoremap <SPACE>ftw :textGrepWorkspace<cr>
+
+" --------- debug
+eclipseaction toggleBreakpoint org.eclipse.debug.ui.commands.ToggleLineBreakpoint
+nnoremap <SPACE>db :toggleBreakpoint<cr>
+
+eclipseaction toggleMethodBreakpoint org.eclipse.debug.ui.commands.ToggleMethodBreakpoint
+nnoremap <SPACE>dm :toggleMethodBreakpoint<cr>
+
+"skip all breakpoints"
+eclipseaction skipAllBreakpoints org.eclipse.debug.ui.commands.SkipAllBreakpoints
+nnoremap <SPACE>ds :skipAllBreakpoints<cr>
+
+"watch"
+eclipseaction watch org.eclipse.jdt.debug.ui.commands.Watch
+nnoremap <SPACE>dw :watch<cr>
+vnoremap <SPACE>dw :watch<cr>
+
+"run/debug/runjunit"
+eclipseaction run org.eclipse.debug.ui.commands.RunLast
+eclipseaction debug org.eclipse.debug.ui.commands.DebugLast
+nnoremap <SPACE>dr :run<cr>
+nnoremap <SPACE>dR :debug<cr>
+" ----------- git
+eclipseaction blame org.eclipse.egit.ui.team.ShowBlame
+nnoremap <SPACE>gb :blame<cr>
+
+" ----------- generate
+" getter setter
+eclipseuiaction generateGetterSetter org.eclipse.jdt.ui.edit.text.java.create.getter.setter
+nnoremap <SPACE>gg :generateGetterSetter<cr>
+
+"constructor"
+eclipseuiaction generateConstructor org.eclipse.jdt.ui.edit.text.java.generate.constructor.using.fields
+nnoremap <SPACE>gc :generateConstructor<cr>
+

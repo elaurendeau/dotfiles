@@ -102,9 +102,10 @@ nnoremap <SPACE>fm :quickOutline<cr>
 
 "find resource"
 eclipseuiaction openResource org.eclipse.ui.navigate.openResource
-nnoremap <SPACE>fr :openResource<cr>
+nnoremap <SPACE>ff :openResource<cr>
 
 " --------- debug"
+
 eclipseaction toggleBreakpoint org.eclipse.debug.ui.commands.ToggleLineBreakpoint
 nnoremap <SPACE>db :toggleBreakpoint<cr>
 
@@ -120,11 +121,34 @@ eclipseaction watch org.eclipse.jdt.debug.ui.commands.Watch
 nnoremap <SPACE>dw :watch<cr>
 vnoremap <SPACE>dw :watch<cr>
 
+eclipseaction inspect org.eclipse.jdt.debug.ui.commands.Inspect
+nnoremap <SPACE>di :inspect<cr>
+vnoremap <SPACE>di :inspect<cr>
+
 "run/debug/runjunit"
 eclipseaction run org.eclipse.debug.ui.commands.RunLast
 eclipseaction debug org.eclipse.debug.ui.commands.DebugLast
 nnoremap <SPACE>dr :run<cr>
 nnoremap <SPACE>dR :debug<cr>
+
+eclipseuiaction runConfig org.eclipse.debug.ui.commands.OpenRunConfigurations
+eclipseuiaction debugConfig org.eclipse.debug.ui.commands.OpenDebugConfigurations
+nnoremap <SPACE>dc :runConfig<cr>
+nnoremap <SPACE>dC :debugConfig<cr>
+
+"eclipseuiaction stepInto org.eclipse.debug.ui.commands.StepInto
+"eclispeuiaction stepOver org.eclipse.debug.ui.commands.StepOver
+"eclipseuiaction stepOut org.eclipse.debug.ui.commands.StepReturn
+"eclipseuiaction resume org.eclipse.debug.ui.commands.Resume
+"eclipseuiaction stop org.eclipse.debug.ui.commands.Terminate
+
+"Map these directly in the IDE"
+"nnoremap <C-h> :stepInto<cr>
+"nnoremap <C-l> :stepOut<cr>
+"nnoremap <C-j> :stepOver<cr>
+"nnoremap <C-r> :resume<cr>
+"nnoremap <C-s> :stop<cr>
+
 " ----------- git"
 eclipseaction blame org.eclipse.egit.ui.team.ShowBlame
 nnoremap <SPACE>gb :blame<cr>

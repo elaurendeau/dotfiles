@@ -48,7 +48,7 @@ nnoremap <SPACE>i :eclipseshowdoc<cr>
 eclipseuiaction quickfix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
 nnoremap <SPACE>q :quickfix<cr>
 
-" ------ find"
+" ------ error"
 
 "next error"
 eclipseaction nextError org.eclipse.ui.navigate.next
@@ -59,6 +59,8 @@ eclipseaction previousError org.eclipse.ui.navigate.previous
 nnoremap <SPACE>eE :previousError<cr> :eclipseshowdoc<cr>
 nnoremap <SPACE>eN :previousError<cr> <ESC>
 
+nnoremap <SPACE>ei :eclipseshowdoc<cr>
+
 " ------- refactor section"
 
 "autoimport"
@@ -68,6 +70,14 @@ nnoremap <SPACE>ri :autoimport<cr>
 "rename"
 eclipseuiaction rename org.eclipse.jdt.ui.correction.renameInFile.assist
 nnoremap <SPACE>rr :rename<cr>
+
+" getter setter"
+eclipseuiaction generateGetterSetter org.eclipse.jdt.ui.edit.text.java.create.getter.setter
+nnoremap <SPACE>rg :generateGetterSetter<cr>
+
+"constructor"
+eclipseuiaction generateConstructor org.eclipse.jdt.ui.edit.text.java.generate.constructor.using.fields
+nnoremap <SPACE>rc :generateConstructor<cr>
 
 
 " --------- find"
@@ -143,22 +153,14 @@ nnoremap <SPACE>dC :debugConfig<cr>
 "eclipseuiaction stop org.eclipse.debug.ui.commands.Terminate
 
 "Map these directly in the IDE"
-"nnoremap <C-h> :stepInto<cr>
-"nnoremap <C-l> :stepOut<cr>
+"nnoremap <C-l> :stepInto<cr>
+"nnoremap <C-h> :stepOut<cr>
 "nnoremap <C-j> :stepOver<cr>
 "nnoremap <C-r> :resume<cr>
-"nnoremap <C-s> :stop<cr>
+"nnoremap <C-t> :stop<cr>
 
 " ----------- git"
 eclipseaction blame org.eclipse.egit.ui.team.ShowBlame
 nnoremap <SPACE>gb :blame<cr>
 
-" ----------- generate"
-" getter setter"
-eclipseuiaction generateGetterSetter org.eclipse.jdt.ui.edit.text.java.create.getter.setter
-nnoremap <SPACE>gg :generateGetterSetter<cr>
-
-"constructor"
-eclipseuiaction generateConstructor org.eclipse.jdt.ui.edit.text.java.generate.constructor.using.fields
-nnoremap <SPACE>gc :generateConstructor<cr>
 

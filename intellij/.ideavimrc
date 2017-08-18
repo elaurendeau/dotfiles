@@ -37,40 +37,59 @@ nnoremap L $
 "Remap U to redo (easier than C-r)
 nnoremap U <C-r>
 
-"global
+"----- global
+"TODO find fix because Comment action isn't working properly..
 nnoremap <Leader>; :action CommentByLineComment<CR>
 nnoremap <Leader>! :action ActivateTerminalToolWindow<CR>
 
-"error section
+"TODO IDE SHOULD DEFINE RecentFiles on Control E
+"nnoremap <C-e> :action RecentFiles<CR>
+
+nnoremap <Leader>I :action QuickJavaDoc<CR>
+nnoremap <Leader>i :action QuickImplementations<CR>
+nnoremap <Leader>a :action GotoAction<CR>
+
+"intellij settings
+nnoremap <Leader>s :action ShowSettings<CR>
+
+"----- error section
 "- also triggers the Error Description popup
 nnoremap <Leader>en :action GotoNextError<CR> :action ShowErrorDescription<CR>
 nnoremap <Leader>ee :action GotoNextError<CR> :action ShowErrorDescription<CR>
 nnoremap <Leader>eN :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
-nnoremap <Leader>ep :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
+nnoremap <Leader>eE :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
 
-"compile
+"----- compile
 nnoremap <Leader>cf :action Compile<CR>
 nnoremap <Leader>cp :action CompileProject<CR>
-"refactor
+"----- refactor
 nnoremap <Leader>rf :action RenameFile<CR>
 
-"find
-nnoremap <Leader>fp :action FileStructurePopup<CR>
-nnoremap <Leader>ft :action ActivateProjectToolWindow<CR>
+"----- find
+nnoremap <Leader>fm :action FileStructurePopup<CR>
 nnoremap <Leader>ff :action GotoFile<CR>
-nnoremap <Leader>fr :action RecentFiles<CR>
 nnoremap <Leader>fg :action FindInPath<CR>
 nnoremap <Leader>fo :action ShowFilePath<CR>
-"bookmark
+nnoremap <Leader>fi :action GotoImplementation<CR> 
+nnoremap <Leader>fsi :action GotoSuperMethod<CR>
+nnoremap <Leader>fd :action GotoTypeDeclaration<CR>
+nnoremap <Leader>fh :action CallHierarchy<CR>
+"----- bookmark
 nnoremap <Leader>bb :action ToggleBookmark<CR>
 nnoremap <Leader>bB :action ShowBookmarks<CR>
-"- intellij settings
-nnoremap <Leader>s :action ShowSettings<CR>
 
-"git
-"- git blame
+"----- git
+"git blame
 nnoremap <Leader>gb :action Annotate<CR>
 nnoremap <Leader>gc :action Git.Branches<CR>
 
-"jump/join/split
+"----- jump/join/split
 nnoremap <Leader>jj :action AceAction<CR>
+
+"----- debug
+nnoremap <Leader>dr :action ChooseRunConfiguration<CR>
+nnoremap <Leader>dd :action ChooseDebugConfiguration<CR>
+
+"----- breakpoints
+nnoremap <Leader>db :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>db :action ToggleMethodBreakpoint<CR>

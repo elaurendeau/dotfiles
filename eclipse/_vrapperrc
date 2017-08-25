@@ -6,7 +6,7 @@
 :set smartcase
 :set startnormalmode
 :set imdisable
-
+:set incsearch
 
 "Alt + movement in insert mode will move
 inoremap <A-h> <C-o>h

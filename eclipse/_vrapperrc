@@ -20,6 +20,9 @@ noremap <SPACE>Y "*Y
 noremap <SPACE>p "*p
 noremap <SPACE>P "*P
 
+" tab to move between ()
+noremap <TAB> %
+
 " Jump to beginning and end of lines easier. From http://vimbits.com/bits/16"
 nnoremap H ^
 nnoremap L $

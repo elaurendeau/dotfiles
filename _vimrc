@@ -34,6 +34,7 @@ colorscheme desert
 
 set laststatus=2                  " always display a status line
 
+set relativenumber
 set number                        " show line numbers
 set numberwidth=5
 set ruler                         " display coordinates in status bar

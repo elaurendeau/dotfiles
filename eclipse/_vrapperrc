@@ -51,6 +51,10 @@ nnoremap <SPACE>i :eclipseshowdoc<cr>
 eclipseuiaction quickfix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
 nnoremap <SPACE>q :quickfix<cr>
 
+"add bookmark"
+eclipseuiaction addBookmark org.eclipse.ui.edit.addBookmark
+nnoremap <SPACE>b :addBookmark<cr>
+
 " ------ error"
 
 "next error"

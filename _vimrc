@@ -110,7 +110,7 @@ imap <A-k> <C-o>k
 imap <A-l> <C-o>l
 
 " easy system clipboard copy/paste"
-nmap <SPACE>y "*y
-nmap <SPACE>Y "*Y
-nmap <SPACE>p "*p
-nmap <SPACE>P "*P
+nmap <SPACE>y "+y
+nmap <SPACE>Y "+Y
+nmap <SPACE>p "+p
+nmap <SPACE>P "+P

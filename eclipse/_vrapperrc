@@ -55,6 +55,10 @@ nnoremap <SPACE>q :quickfix<cr>
 eclipseuiaction addBookmark org.eclipse.ui.edit.addBookmark
 nnoremap <SPACE>b :addBookmark<cr>
 
+"ace jump"
+eclipseuiaction acejump ace.jump.Command
+nnoremap <SPACE>c :acejump<cr>
+
 " ------ error"
 
 "next error"

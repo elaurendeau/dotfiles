@@ -63,12 +63,12 @@ nnoremap <SPACE>h :acejump<cr>
 
 "next error"
 eclipseaction nextError org.eclipse.ui.navigate.next
-nnoremap <SPACE>ee :nextError<cr> :eclipseshowdoc<cr>
-nnoremap <SPACE>en :nextError<cr> <ESC>
+nnoremap <SPACE>en :nextError<cr> :eclipseshowdoc<cr>
+nnoremap <SPACE>ee :nextError<cr> :quickfix<cr>
 
 eclipseaction previousError org.eclipse.ui.navigate.previous
-nnoremap <SPACE>eE :previousError<cr> :eclipseshowdoc<cr>
-nnoremap <SPACE>eN :previousError<cr> <ESC>
+nnoremap <SPACE>eN :previousError<cr> :eclipseshowdoc<cr>
+nnoremap <SPACE>eE :previousError<cr> :quickfix<cr>
 
 nnoremap <SPACE>ei :eclipseshowdoc<cr>
 
@@ -89,6 +89,10 @@ nnoremap <SPACE>rg :generateGetterSetter<cr>
 "constructor"
 eclipseuiaction generateConstructor org.eclipse.jdt.ui.edit.text.java.generate.constructor.using.fields
 nnoremap <SPACE>rc :generateConstructor<cr>
+
+"reformat file"
+eclipseaction reformat org.eclipse.jdt.ui.edit.text.java.format
+nnoremap <SPACE>rf :reformat<cr>
 
 
 " --------- find"

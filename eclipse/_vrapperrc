@@ -31,7 +31,7 @@ nnoremap L $
 nnoremap U <C-r>
 
 "Move to the next capital letter"
-nnoremap <C-t> /[A-Z]<return>
+nnoremap <C-t> /[A-Z]<return>:noh<cr>
 
 
 "global"

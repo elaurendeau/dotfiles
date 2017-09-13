@@ -30,6 +30,9 @@ nnoremap L $
 "Remap U to redo (easier than C-r)
 nnoremap U <C-r>
 
+"Move to the next capital letter"
+nnoremap <C-t> /[A-Z]<return>
+
 
 "global"
 eclipseaction toggleComment org.eclipse.jdt.ui.edit.text.java.toggle.comment

@@ -60,7 +60,7 @@ nnoremap <SPACE>b :addBookmark<cr>
 
 "ace jump"
 eclipseuiaction acejump ace.jump.Command
-nnoremap <SPACE>h :acejump<cr>
+nnoremap <SPACE><SPACE> :acejump<cr>
 
 " ------ error"
 

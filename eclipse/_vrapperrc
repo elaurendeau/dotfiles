@@ -60,7 +60,7 @@ nnoremap <SPACE>b :addBookmark<cr>
 
 "ace jump"
 eclipseuiaction acejump ace.jump.Command
-nnoremap <SPACE>h :acejump<cr>
+nnoremap <SPACE><SPACE> :acejump<cr>
 
 " ------ error"
 
@@ -131,6 +131,13 @@ nnoremap <SPACE>fm :quickOutline<cr>
 "find resource"
 eclipseuiaction openResource org.eclipse.ui.navigate.openResource
 nnoremap <SPACE>ff :openResource<cr>
+
+"open type hierarchy"
+eclipseuiaction typeHierarchy org.eclipse.jdt.ui.edit.text.java.open.hierarchy
+nnoremap <SPACE>ft :typeHierarchy<cr>
+
+eclipseuiaction typeHierarchySearch org.eclipse.jdt.ui.navigate.open.type.in.hierarchy
+nnoremap <SPACE>fT :typeHierarchySearch<cr>
 
 " --------- debug"
 

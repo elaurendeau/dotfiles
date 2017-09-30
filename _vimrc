@@ -114,3 +114,7 @@ nmap <SPACE>y "+y
 nmap <SPACE>Y "+Y
 nmap <SPACE>p "+p
 nmap <SPACE>P "+P
+vmap <SPACE>y "+y
+vmap <SPACE>Y "+Y
+vmap <SPACE>p "+p
+vmap <SPACE>P "+P

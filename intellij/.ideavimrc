@@ -18,17 +18,18 @@ set relativenumber
 "time that is waited for a mapped key sequence
 set notimeout ttimeout ttimeoutlen=200
 
-"Alt + movement in insert mode will move
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
-
 " easy system clipboard copy/paste
+vnoremap <Leader>y "*y
+vnoremap <Leader>Y "*Y
+vnoremap <Leader>p "*p
+vnoremap <Leader>P "*P
 noremap <Leader>y "*y
 noremap <Leader>Y "*Y
 noremap <Leader>p "*p
 noremap <Leader>P "*P
+
+" tab to %
+nnoremap <TAB> %
 
 " Jump to beginning and end of lines easier. From http://vimbits.com/bits/16
 nnoremap H ^
@@ -37,59 +38,58 @@ nnoremap L $
 "Remap U to redo (easier than C-r)
 nnoremap U <C-r>
 
-"----- global
-"TODO find fix because Comment action isn't working properly..
+"global
 nnoremap <Leader>; :action CommentByLineComment<CR>
+vnoremap <Leader>; :action CommentByLineComment<CR>
 nnoremap <Leader>! :action ActivateTerminalToolWindow<CR>
 
-"TODO IDE SHOULD DEFINE RecentFiles on Control E
-"nnoremap <C-e> :action RecentFiles<CR>
+"Acejump"
+nnoremap <Leader><Leader> :action AceAction<CR>
 
-nnoremap <Leader>I :action QuickJavaDoc<CR>
-nnoremap <Leader>i :action QuickImplementations<CR>
+"Action window"
 nnoremap <Leader>a :action GotoAction<CR>
-
-"intellij settings
+"- intellij settings
 nnoremap <Leader>s :action ShowSettings<CR>
 
-"----- error section
+"show doc"
+nnoremap <Leader>i :action GuiDesigner.QuickJavadoc<CR>                           
+"Quick fix"
+nnoremap <Leader>q :action ShowIntentionActions<CR>
+
+"error section
 "- also triggers the Error Description popup
 nnoremap <Leader>en :action GotoNextError<CR> :action ShowErrorDescription<CR>
-nnoremap <Leader>ee :action GotoNextError<CR> :action ShowErrorDescription<CR>
+nnoremap <Leader>ee :action GotoNextError<CR> :action ShowIntentionActions<CR>
 nnoremap <Leader>eN :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
-nnoremap <Leader>eE :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
+nnoremap <Leader>ep :action GotoPreviousError<CR>:action ShowIntentionActions<CR>
 
-"----- compile
+"compile
 nnoremap <Leader>cf :action Compile<CR>
 nnoremap <Leader>cp :action CompileProject<CR>
-"----- refactor
+"refactor
 nnoremap <Leader>rf :action RenameFile<CR>
+"auto importResourceBundleEditorShowIntentions"
+nnoremap <Leader>ri :action OptimizeImports<CR>
+"refactor rename element"
+nnoremap <Leader>rr :action RenameElement<CR>
+vnoremap <Leader>rr :action RenameElement<CR>
+"generate"
+nnoremap <Leader>rG :action Generate<CR>
+nnoremap <Leader>rg :action GenerateGetterAndSetter<CR>
+nnoremap <Leader>rc :action GenerateConstructor<CR>
+"reformat"
+nnoremap <Leader>rf :action ReformatCode<CR>
 
-"----- find
-nnoremap <Leader>fm :action FileStructurePopup<CR>
+"find
 nnoremap <Leader>ff :action GotoFile<CR>
-nnoremap <Leader>fg :action FindInPath<CR>
-nnoremap <Leader>fo :action ShowFilePath<CR>
-nnoremap <Leader>fi :action GotoImplementation<CR> 
-nnoremap <Leader>fsi :action GotoSuperMethod<CR>
-nnoremap <Leader>fd :action GotoTypeDeclaration<CR>
-nnoremap <Leader>fh :action CallHierarchy<CR>
-"----- bookmark
+"bookmark
 nnoremap <Leader>bb :action ToggleBookmark<CR>
 nnoremap <Leader>bB :action ShowBookmarks<CR>
 
-"----- git
-"git blame
+"git
+"- git blame
 nnoremap <Leader>gb :action Annotate<CR>
 nnoremap <Leader>gc :action Git.Branches<CR>
 
-"----- jump/join/split
+"jump/join/split
 nnoremap <Leader>jj :action AceAction<CR>
-
-"----- debug
-nnoremap <Leader>dr :action ChooseRunConfiguration<CR>
-nnoremap <Leader>dd :action ChooseDebugConfiguration<CR>
-
-"----- breakpoints
-nnoremap <Leader>db :action ToggleLineBreakpoint<CR>
-nnoremap <Leader>db :action ToggleMethodBreakpoint<CR>

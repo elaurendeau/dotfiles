@@ -8,12 +8,6 @@
 :set imdisable
 :set incsearch
 
-"Alt + movement in insert mode will move
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
-
 " easy system clipboard copy/paste"
 noremap <SPACE>y "*y
 noremap <SPACE>Y "*Y

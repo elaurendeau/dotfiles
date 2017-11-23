@@ -52,9 +52,10 @@ nnoremap <Leader>a :action GotoAction<CR>
 nnoremap <Leader>s :action ShowSettings<CR>
 
 "show doc"
-nnoremap <Leader>i :action GuiDesigner.QuickJavadoc<CR>                           
+nnoremap <Leader>i :action QuickImplementations<CR>                           
 "Quick fix"
 nnoremap <Leader>q :action ShowIntentionActions<CR>
+
 
 "error section
 "- also triggers the Error Description popup
@@ -82,14 +83,55 @@ nnoremap <Leader>rf :action ReformatCode<CR>
 
 "find
 nnoremap <Leader>ff :action GotoFile<CR>
+"find implementation"
+nnoremap <Leader>fi :action GotoImplementation<CR>
+"find declaration"
+nnoremap <Leader>fd :action GotoDeclaration<CR>
+
+"find type declaration"
+nnoremap <Leader>fD :action GotoTypeDeclaration<CR>
+
+"find super implementation"
+nnoremap <Leader>fsi :action GotoSuperMethod<CR>
+"grep"
+nnoremap <Leader>fg :action FindInPath<CR>
+"find usage"
+nnoremap <Leader>fu :action FindUsages<CR>
+
+"show file outline"
+nnoremap <Leader>fm :action FileStructurePopup<CR>
+
+"type hierarchy"
+nnoremap <Leader>ft :action TypeHierarchy<CR>
+
 "bookmark
 nnoremap <Leader>bb :action ToggleBookmark<CR>
 nnoremap <Leader>bB :action ShowBookmarks<CR>
+
+"line breakpoint"
+nnoremap <Leader>db :action ToggleLineBreakpoint<CR>
+"temporary line breakpoint"
+nnoremap <Leader>dB :action ToggleTemporaryLineBreakpoint<CR>
+"method breakpoint"
+nnoremap <Leader>dm :action ToggleMethodBreakpoint<CR>
+
+"add to watch"
+nnoremap <Leader>dw :action Debugger.AddToWatch<CR>
+vnoremap <Leader>dw :action Debugger.AddToWatch<CR>
+
+"evaluate"
+nnoremap <Leader>di :action EvaluateExpression<CR>
+vnoremap <Leader>di :action EvaluateExpression<CR>
+
+"run"
+nnoremap <Leader>dr :action Run<CR>
+nnoremap <Leader>dR :action Debug<CR>
+
+"run config"
+nnoremap <Leader>dc :action ChooseRunConfiguration<CR>
+nnoremap <Leader>dC :action ChooseDebugConfiguration<CR>
 
 "git
 "- git blame
 nnoremap <Leader>gb :action Annotate<CR>
 nnoremap <Leader>gc :action Git.Branches<CR>
-
-"jump/join/split
-nnoremap <Leader>jj :action AceAction<CR>

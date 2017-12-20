@@ -1,12 +1,13 @@
 call plug#begin('~/AppData/Local/nvim-data/plugged')
 
-
 Plug 'fatih/vim-go'
+
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
@@ -44,7 +45,22 @@ filetype plugin on
 filetype plugin indent on
 syntax on
 
-map <Space>w <Plug>(easymotion-w)
+"easy motion key to navigate to specific character"
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+map <Leader><Leader> <Plug>(easymotion-s)
+vmap <Leader><Leader> <Plug>(easymotion-s)
+
+"nerd tree configuration"
+"Auto start"
+autocmd vimenter * NERDTree
+"Auto close when there is no buffer"
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"Nerd commenter configuration"
+"disable config
+let g:NERDCreateDefaultMappings = 0
+nmap <leader>; <plug>NERDCommenterToggle
+vmap <leader>; <plug>NERDCommenterToggle gv
 
 "system clipboard copy/paste"
 noremap <SPACE>y "*y

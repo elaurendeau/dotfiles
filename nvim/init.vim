@@ -24,6 +24,7 @@ set smartcase
 set imdisable
 set incsearch
 set nowrap
+set hidden
 
 set expandtab
 set tabstop=2

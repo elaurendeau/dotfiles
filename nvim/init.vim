@@ -8,6 +8,8 @@ Plug 'flazz/vim-colorschemes'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
 
 call plug#end()
 
@@ -34,7 +36,10 @@ set cursorline
 set cursorcolumn
 
 "set color scheme"
-colorscheme molokai
+try
+	colorscheme molokai
+catch
+endtry
 
 "file enconding"
 set fileencoding=utf-8
@@ -63,27 +68,73 @@ let g:NERDCreateDefaultMappings = 0
 nmap <leader>; <plug>NERDCommenterToggle
 vmap <leader>; <plug>NERDCommenterToggle gv
 
+"Ctrlp search
+"Search within the files, buffers and MRU
+let g:ctrlp_cmd = 'CtrlPCurWD'
+"show hidden files"
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_map = '<leader>ff'
+"open recent files
+noremap <C-e> :CtrlPMRU<CR>
+
 "system clipboard copy/paste"
 noremap <SPACE>y "*y
 noremap <SPACE>Y "*Y
 noremap <SPACE>p "*p
 noremap <SPACE>P "*P
-
 "tab to move between ()"
 noremap <TAB> %
 
-nnoremap H ^
-nnoremap L $
+"move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l   
+
+"search for selected words
+vnoremap <silent> / :call VisualSelection('f', '')<CR>
+vnoremap <silent> ? :call VisualSelection('b', '')<CR>
+vnoremap <silent> <Leader>fg :call VisualSelection('gv', '')<CR>
+
+noremap H ^
+noremap L $
+
+noremap <leader>q :q<CR>
+noremap <leader>w :w<CR>
 
 "Remap U to redo (easier than C-r)"
-nnoremap U <C-r>
+noremap U <C-r>
 
 "next and previous buffers"
-nnoremap <C-TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
+noremap <C-TAB> :bnext<CR>
+noremap <S-TAB> :bprevious<CR>
 
-nnoremap <leader>1 :NERDTreeToggle<CR>
+noremap <leader>1 :NERDTreeToggle<CR>
 
+"search function to allow to do a / or ? from a selection
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
 
-"Nerdtree close vim if only nerdtree is left"
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
 
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("Ack \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction

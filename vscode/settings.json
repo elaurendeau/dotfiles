@@ -80,5 +80,7 @@
                 "esc"
             ]
         }
-    ]
+    ],
+    "vim.statusBarColorControl": true,
+    "vim.surround": true
 }

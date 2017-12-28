@@ -1,0 +1,84 @@
+{
+    "vim.easymotion": true,
+    "vim.easymotionKeys": "hklyuiopnmqwertzxcvbasdgjf",
+    "vim.leader": "<space>",
+    "vim.hlsearch": true,
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "leader"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "s"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "y"
+            ],
+            "after": [
+                "\"",
+                "*",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "Y"
+            ],
+            "after": [
+                "\"",
+                "*",
+                "Y"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "*",
+                "p"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "P"
+            ],
+            "after": [
+                "\"",
+                "*",
+                "P"
+            ]
+        },
+        {
+            "before": [
+                "tab"
+            ],
+            "after": [
+                "%"
+            ]
+        }
+    ],
+    "editor.formatOnSave": true,
+    "vim.visualstar": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "esc"
+            ]
+        }
+    ]
+}

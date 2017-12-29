@@ -1,9 +1,36 @@
 {
     "vim.easymotion": true,
     "vim.easymotionKeys": "hklyuiopnmqwertzxcvbasdgjf",
-    "vim.leader": "<space>",
+    "vim.leader": " ",
     "vim.hlsearch": true,
     "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "f",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                ";"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine",
+                    "args": []
+                }
+            ]
+        },
         {
             "before": [
                 "leader",
@@ -61,10 +88,87 @@
         },
         {
             "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "U"
+            ],
+            "after": [
+                "<C-r>"
+            ]
+        },
+        {
+            "before": [
                 "tab"
             ],
             "after": [
                 "%"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":nohl"
+                }
+            ]
+        },
+        {
+            "before": [
+                "Z",
+                "Z"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                },
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "a"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "C-e"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "extension.openRecentFiles",
+                    "args": []
+                }
             ]
         }
     ],
@@ -77,10 +181,24 @@
                 "j"
             ],
             "after": [
-                "esc"
+                "<Esc>"
             ]
         }
     ],
     "vim.statusBarColorControl": true,
-    "vim.surround": true
+    "vim.statusBarColors": {
+        "normal": "#005f5f",
+        "insert": "#5f0000",
+        "visual": "#5f00af",
+        "visualline": "#005f87",
+        "visualblock": "#86592d",
+        "replace": "#000000"
+    },
+    "vim.surround": true,
+    "editor.lineNumbers": "relative",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    }
 }

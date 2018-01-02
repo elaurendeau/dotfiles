@@ -14,7 +14,7 @@
         "command": "-workbench.view.explorer"
     },
     {
-        "key": "ctrl+shift+alt+2",
+        "key": "ctrl+1",
         "command": "workbench.action.focusFirstEditorGroup"
     },
     {

@@ -89,6 +89,19 @@
         {
             "before": [
                 "leader",
+                "q"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+         },
+        {
+            "before": [
+                "leader",
                 "w"
             ],
             "after": [],
@@ -348,6 +361,76 @@
         {
             "before": [
                 "leader",
+                "f",
+                "i"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.goToImplementation",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f",
+                "D"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.openDeclarationToTheSide",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f",
+                "g"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.view.search",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f",
+                "h"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.referenceSearch.trigger",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f",
+                "d"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.goToDeclaration",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
                 "r",
                 "f"
             ],
@@ -385,9 +468,9 @@
     "vim.surround": true,
     "editor.lineNumbers": "relative",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
+        "statusBar.background": "#5f00af",
+        "statusBar.noFolderBackground": "#5f00af",
+        "statusBar.debuggingBackground": "#5f00af"
     },
     "go.autocompleteUnimportedPackages": true,
     "go.docsTool": "gogetdoc",

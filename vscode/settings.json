@@ -88,6 +88,19 @@
         },
         {
             "before": [
+                "leader",
+                "w"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
                 "L"
             ],
             "after": [
@@ -170,6 +183,181 @@
                     "args": []
                 }
             ]
+        },
+        {
+            "before": [
+                "leader",
+                "e",
+                "N"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.marker.prev",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "e",
+                "n"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.marker.next",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "e",
+                "E"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.marker.prev",
+                    "args": []
+                },
+                {
+                    "command": "editor.action.quickFix",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "e",
+                "e"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.marker.next",
+                    "args": []
+                },
+                {
+                    "command": "editor.action.quickFix",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "q"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.quickFix",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "r",
+                "i"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "go.import.add",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "b"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "bookmarks.toggle",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "c"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "bookmarks.clear",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "C"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "bookmarks.clearFromAllFiles",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "F"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "bookmarks.listFromAllFiles",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "b",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "bookmarks.list",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "r",
+                "f"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.format",
+                    "args": []
+                }
+            ]
         }
     ],
     "editor.formatOnSave": true,
@@ -200,5 +388,13 @@
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
         "statusBar.debuggingBackground": "#005f5f"
-    }
+    },
+    "go.autocompleteUnimportedPackages": true,
+    "go.docsTool": "gogetdoc",
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": false
+    },
+    "files.autoSave": "afterDelay",
+    "window.zoomLevel": 0
 }

@@ -98,7 +98,7 @@
                     "args": []
                 }
             ]
-         },
+        },
         {
             "before": [
                 "leader",
@@ -376,20 +376,6 @@
             "before": [
                 "leader",
                 "f",
-                "D"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "editor.action.openDeclarationToTheSide",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "f",
                 "g"
             ],
             "after": [],
@@ -418,12 +404,138 @@
             "before": [
                 "leader",
                 "f",
+                "D"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.previewDeclaration",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f",
                 "d"
             ],
             "after": [],
             "commands": [
                 {
                     "command": "editor.action.goToDeclaration",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "m"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.debug.viewlet.action.addFunctionBreakpointAction",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "B"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.debug.action.conditionalBreakpoint",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "S"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.debug.viewlet.action.enableAllBreakpoints",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "s"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.debug.viewlet.action.disableAllBreakpoints",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "r"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.start",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "R"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.restart",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "w"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.debug.action.selectionToWatch",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "d",
+                "b"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.debug.action.toggleBreakpoint",
                     "args": []
                 }
             ]
@@ -468,9 +580,9 @@
     "vim.surround": true,
     "editor.lineNumbers": "relative",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#5f00af",
-        "statusBar.noFolderBackground": "#5f00af",
-        "statusBar.debuggingBackground": "#5f00af"
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
     },
     "go.autocompleteUnimportedPackages": true,
     "go.docsTool": "gogetdoc",

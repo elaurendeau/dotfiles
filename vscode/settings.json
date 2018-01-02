@@ -7,6 +7,19 @@
         {
             "before": [
                 "leader",
+                "i"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.showHover",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
                 "f",
                 "f"
             ],

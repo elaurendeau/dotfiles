@@ -19,14 +19,14 @@ set relativenumber
 set notimeout ttimeout ttimeoutlen=200
 
 " easy system clipboard copy/paste
-vnoremap <Leader>y "*y
-vnoremap <Leader>Y "*Y
-vnoremap <Leader>p "*p
-vnoremap <Leader>P "*P
-noremap <Leader>y "*y
-noremap <Leader>Y "*Y
-noremap <Leader>p "*p
-noremap <Leader>P "*P
+vnoremap <A-y> "*y
+vnoremap <A-Y> "*Y
+vnoremap <A-p> "*p
+vnoremap <A-P> "*P
+nnoremap <A-y> "*y
+nnoremap <A-Y> "*Y
+nnoremap <A-p> "*p
+nnoremap <A-P> "*P
 
 " tab to %
 nnoremap <TAB> %
@@ -38,100 +38,5 @@ nnoremap L $
 "Remap U to redo (easier than C-r)
 nnoremap U <C-r>
 
-"global
-nnoremap <Leader>; :action CommentByLineComment<CR>
-vnoremap <Leader>; :action CommentByLineComment<CR>
-nnoremap <Leader>! :action ActivateTerminalToolWindow<CR>
-
 "Acejump"
 nnoremap <Leader><Leader> :action AceAction<CR>
-
-"Action window"
-nnoremap <Leader>a :action GotoAction<CR>
-"- intellij settings
-nnoremap <Leader>s :action ShowSettings<CR>
-
-"show doc"
-nnoremap <Leader>i :action QuickImplementations<CR>                           
-"Quick fix"
-nnoremap <Leader>q :action ShowIntentionActions<CR>
-
-
-"error section
-"- also triggers the Error Description popup
-nnoremap <Leader>en :action GotoNextError<CR> :action ShowErrorDescription<CR>
-nnoremap <Leader>ee :action GotoNextError<CR> :action ShowIntentionActions<CR>
-nnoremap <Leader>eN :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
-nnoremap <Leader>ep :action GotoPreviousError<CR>:action ShowIntentionActions<CR>
-
-"compile
-nnoremap <Leader>cf :action Compile<CR>
-nnoremap <Leader>cp :action CompileProject<CR>
-"refactor
-nnoremap <Leader>rf :action RenameFile<CR>
-"auto importResourceBundleEditorShowIntentions"
-nnoremap <Leader>ri :action OptimizeImports<CR>
-"refactor rename element"
-nnoremap <Leader>rr :action RenameElement<CR>
-vnoremap <Leader>rr :action RenameElement<CR>
-"generate"
-nnoremap <Leader>rG :action Generate<CR>
-nnoremap <Leader>rg :action GenerateGetterAndSetter<CR>
-nnoremap <Leader>rc :action GenerateConstructor<CR>
-"reformat"
-nnoremap <Leader>rf :action ReformatCode<CR>
-
-"find
-nnoremap <Leader>ff :action GotoFile<CR>
-"find implementation"
-nnoremap <Leader>fi :action GotoImplementation<CR>
-"find declaration"
-nnoremap <Leader>fd :action GotoDeclaration<CR>
-
-"find type declaration"
-nnoremap <Leader>fD :action GotoTypeDeclaration<CR>
-
-"find super implementation"
-nnoremap <Leader>fsi :action GotoSuperMethod<CR>
-"grep"
-nnoremap <Leader>fg :action FindInPath<CR>
-"find usage"
-nnoremap <Leader>fu :action FindUsages<CR>
-
-"show file outline"
-nnoremap <Leader>fm :action FileStructurePopup<CR>
-
-"type hierarchy"
-nnoremap <Leader>ft :action TypeHierarchy<CR>
-
-"bookmark
-nnoremap <Leader>bb :action ToggleBookmark<CR>
-nnoremap <Leader>bB :action ShowBookmarks<CR>
-
-"line breakpoint"
-nnoremap <Leader>db :action ToggleLineBreakpoint<CR>
-"temporary line breakpoint"
-nnoremap <Leader>dB :action ToggleTemporaryLineBreakpoint<CR>
-"method breakpoint"
-nnoremap <Leader>dm :action ToggleMethodBreakpoint<CR>
-
-"add to watch"
-nnoremap <Leader>dw :action Debugger.AddToWatch<CR>
-vnoremap <Leader>dw :action Debugger.AddToWatch<CR>
-
-"evaluate"
-nnoremap <Leader>di :action EvaluateExpression<CR>
-vnoremap <Leader>di :action EvaluateExpression<CR>
-
-"run"
-nnoremap <Leader>dr :action Run<CR>
-nnoremap <Leader>dR :action Debug<CR>
-
-"run config"
-nnoremap <Leader>dc :action ChooseRunConfiguration<CR>
-nnoremap <Leader>dC :action ChooseDebugConfiguration<CR>
-
-"git
-"- git blame
-nnoremap <Leader>gb :action Annotate<CR>
-nnoremap <Leader>gc :action Git.Branches<CR>

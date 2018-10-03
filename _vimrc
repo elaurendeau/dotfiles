@@ -118,3 +118,12 @@ vmap <SPACE>y "+y
 vmap <SPACE>Y "+Y
 vmap <SPACE>p "+p
 vmap <SPACE>P "+P
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'chase/vim-ansible-yaml'
+
+call vundle#end()
+filetype plugin indent on

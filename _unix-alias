@@ -1,0 +1,5 @@
+alias ll="ls -la"
+alias gs="git status"
+alias gc="git commit -c ""S*""
+alias gp="git pull"
+alias rgrep="grep -r ""$*"" ."

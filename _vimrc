@@ -126,6 +126,7 @@ call vundle#begin()
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'ingydotnet/yaml-vim'
 
 call vundle#end()
 filetype plugin indent on

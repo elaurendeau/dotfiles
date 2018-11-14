@@ -1,6 +1,6 @@
 alias ll="ls -la"
 alias gs="git status"
-alias gc="git commit -c ""$*""
+alias gc="git commit -c \"$*\""
 alias gp="git pull"
 alias ga="git add --all"
-alias rgrep="grep -r ""$*"" ."
+alias rgrep="grep -r \"$*\"."

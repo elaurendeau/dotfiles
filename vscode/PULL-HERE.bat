@@ -1,1 +1,0 @@
-xcopy "%userprofile%\AppData\Roaming\Code\User\*.json" "%userprofile%\dotfiles\vscode" /Y

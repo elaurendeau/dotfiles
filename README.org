@@ -1,0 +1,15 @@
+#+TITLE: Tool configuration repo
+#+STARTUP: showall
+
+
+* Symlink
+* Emacs
+** ln -s ./emacs/init.el ~/.emacs.d/init.el
+* vim
+** [[*https://github.com/VundleVim/Vundle.vim][Install vundle]]
+** ln -s ./vim/_vimrc ~/_vimrc
+  
+* zsh
+** [[https://github.com/powerline/fonts][Install powerline font]] 
+** [[https://gist.github.com/derhuerst/12a1558a4b408b3b2b6e][Install zsh]]
+** ln -s ./zsh/.zshrc ~/.zshrc

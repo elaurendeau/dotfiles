@@ -2,12 +2,13 @@
 #+STARTUP: showall
 
 * Emacs
-1. ln -s ./emacs/init.el ~/.emacs.d/init.el
+1. ln -s `pwd`/emacs/init.el ~/.emacs.d/init.el
+2. ln -s `pwd`/emacs/config.org ~/.emacs.d/config.org
 * vim
 1. [[*https://github.com/VundleVim/Vundle.vim][Install vundle]]
-2. ln -s ./vim/_vimrc ~/_vimrc
+2. ln -s `pwd`/vim/_vimrc ~/_vimrc
   
 * zsh
 1. [[https://github.com/powerline/fonts][Install powerline font]] 
 2. [[https://gist.github.com/derhuerst/12a1558a4b408b3b2b6e][Install zsh]]
-3. ln -s ./zsh/.zshrc ~/.zshrc
+3. ln -s `pwd`.//zsh/.zshrc ~/.zshrc

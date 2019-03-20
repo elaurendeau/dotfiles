@@ -1,0 +1,164 @@
+#+TITLE: Emacs Config
+#+TOC: true
+
+* Setup
+** Package management
+   Install the [[https://melpa.org/#/use-package][use-package]] package.
+   
+#+BEGIN_SRC emacs-lisp
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+#+END_SRC
+
+** Add interface configuration
+   #+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+(tool-bar-mode -1)
+(fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "<f5>") 'revert-buffer)
+(setq-default display-line-numbers 'relative)
+   #+END_SRC
+** Theme
+*** Install solarized-theme
+    Install [[https://melpa.org/#/solarized-theme][solarized package.]]
+    
+#+BEGIN_SRC emacs-lisp
+(use-package solarized-theme
+  :ensure t
+  )
+#+END_SRC
+*** Load theme
+#+BEGIN_SRC emacs-lisp
+  (load-theme 'solarized-dark t)
+#+END_SRC
+** Vim (evil mode)
+   Install evil mode for vim editing
+*** Install dependency [[https://melpa.org/#/evil][Evil melpa]]
+   #+BEGIN_SRC emacs-lisp
+(use-package evil
+  :ensure t ;; install the evil package if not installed
+  :init ;; tweak evil's configuration before loading it
+  (setq evil-search-module 'evil-search)
+  (setq evil-ex-complete-emacs-commands nil)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (setq evil-shift-round nil)
+  (setq evil-want-C-u-scroll t)
+  :config ;; tweak evil after loading it
+  (evil-mode))
+
+(defvar +evil-esc-hook '(t)
+  "A hook run after ESC is pressed in normal mode (invoked by
+`evil-force-normal-state'). If any hook returns non-nil, all hooks after it are
+ignored.")
+
+(defun +evil*attach-escape-hook ()
+  "Run the `+evil-esc-hook'."
+  (cond ((minibuffer-window-active-p (minibuffer-window))
+	 ;; quit the minibuffer if open.
+	 (abort-recursive-edit))
+	((evil-ex-hl-active-p 'evil-ex-search)
+	 ;; disable ex search buffer highlights.
+	 (evil-ex-nohighlight))
+	(t
+	 ;; Run all escape hooks. If any returns non-nil, then stop there.
+	 (run-hook-with-args-until-success '+evil-esc-hook))))
+   #+END_SRC
+
+** Package testing
+  Install the [[https://melpa.org/#/try][Try package.]] 
+  
+  Do the following to temporary install a package.
+#+BEGIN_SRC quote
+M-x try PACKAGE_NAME
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package try
+  :ensure t)
+#+END_SRC
+
+** Cheat sheet
+Install the [[https://melpa.org/#/which-key][which-key package.]]
+This package adds the key bind cheat sheet at the bottom of the screen.
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+#+END_SRC
+** org mode
+*** Install org-bullets
+    Install the [[https://melpa.org/#/org-bullets][org-bullets package.]] 
+    This package replaces the stars and convert them into bullet points.
+#+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+
+*** TODO add more org mode configuration
+** Auto-completion
+
+*** Install helm
+   Install the [[https://melpa.org/#/helm][helm package.]]
+   This package is resposible the core framework for auto completion.
+   
+#+BEGIN_SRC emacs-lisp
+(use-package helm
+  :ensure t
+  :init
+  (progn
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key [C-tab] 'helm-mini)
+    (global-unset-key (kbd "C-z"))
+    (global-set-key (kbd "C-x b") 'helm-mini)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+    ))
+#+END_SRC
+*** Install helm-swoop
+    Install the [[https://melpa.org/#/helm-swoop][helm-swoop package.]]
+    This is an advanced grep package. You can search the current file, multiple buffers, etc.
+    
+#+BEGIN_SRC quote
+- `M-x helm-swoop` when region active
+- `M-x helm-swoop` when the cursor is at any symbol
+- `M-x helm-swoop` when the cursor is not at any symbol
+- `M-3 M-x helm-swoop` or `C-u 5 M-x helm-swoop` multi separated line culling
+- `M-x helm-multi-swoop` multi-occur like feature
+- `M-x helm-multi-swoop-all` apply all buffers
+- `C-u M-x helm-multi-swoop` apply last selected buffers from the second time
+- `M-x helm-swoop-same-face-at-point` list lines have the same face at the cursor is on
+- During isearch `M-i` to hand the word over to helm-swoop
+- During helm-swoop `M-i` to hand the word over to helm-multi-swoop-all
+- While doing `helm-swoop` press `C-c C-e` to edit mode, apply changes to original buffer by `C-x C-s`
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package helm-swoop
+  :ensure t
+  :init
+  (progn
+    (setq helm-swoop-speed-or-color t)
+    (global-set-key (kbd "C-s") 'helm-swoop)
+    ))
+#+END_SRC
+*** TODO ac-helm
+** Window management
+*** Install [[https://melpa.org/#/ace-window][ace-window]]
+    This package will display numbers when you have more than 2 window and you try to change focus via C-x o.
+    
+#+BEGIN_SRC emacs-lisp
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-forground :height 3.0)))))
+    ))
+#+END_SRC

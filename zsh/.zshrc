@@ -65,6 +65,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(
 	git
 	vi-mode
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,6 +103,7 @@ alias evim="vim ~/_vimrc"
 alias ealias="vim ~/.zshrc"
 alias ralias="source ~/.zshrc"
 alias ll="ls -la"
+alias emacsdir="cd ~/.emacs.d"
 
 alias ws="cd ~/workspace"
 alias pws="cd ~/personal_workspace"
@@ -116,5 +118,6 @@ alias tcbdeci="tcb && cd tcb-or-decisioning"
 alias tcbsql="tcb && cd or-sql-scripts"
 alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs "$@"'
 alias dotfiles="pws && cd dotfiles"
+alias gitrmignored="git ls-files -i --exclude-from=.gitignore | xargs git rm --cached  "
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"

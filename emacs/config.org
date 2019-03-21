@@ -2,6 +2,18 @@
 #+TOC: true
 
 * Setup
+** Self edit keybind
+   This binding will bring you directly to this config.org file for editing
+   #+BEGIN_SRC emacs-lisp
+   (defun find-config ()
+    "Edit config.org"
+    (interactive)
+    (find-file (concat user-emacs-directory "config.org")))
+
+  (global-set-key (kbd "C-c I") 'find-config)
+   
+   #+END_SRC
+
 ** Package management
    Install the [[https://melpa.org/#/use-package][use-package]] package.
    
@@ -18,12 +30,26 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<f5>") 'revert-buffer)
 (setq-default display-line-numbers 'relative)
+(column-number-mode 1)
    #+END_SRC
+
+** Temporary files location
+#+BEGIN_SRC emacs-lisp
+(setq auto-save-file-name-transformations 
+`((".*", (concat user-emacs-directory "auto-save/") t)))
+
+(setq backup-directory-alist
+`((".", (concat user-emacs-directory "backups") t)))
+#+END_SRC
+
+#+RESULTS:
+| . | ~/.emacs.d/backups | t |
+
 ** Theme
 *** Install solarized-theme
     Install [[https://melpa.org/#/solarized-theme][solarized package.]]
     
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lis
 (use-package solarized-theme
   :ensure t
   )

@@ -1,15 +1,20 @@
 #+TITLE: Tool configuration
 #+STARTUP: showall
-
+* Fonts
+1. git clone https://github.com/powerline/fonts.git --depth=1
+2. cd fonts
+3. ./install.sh
+4. cd ..
+5. rm -rf fonts
 * Emacs
 1. ln -s `pwd`/emacs/init.el ~/.emacs.d/init.el
 2. ln -s `pwd`/emacs/config.org ~/.emacs.d/config.org
 * vim
 1. [[*https://github.com/VundleVim/Vundle.vim][Install vundle]]
 2. ln -s `pwd`/vim/_vimrc ~/_vimrc
-  
+
 * zsh
-1. [[https://github.com/powerline/fonts][Install powerline font]] 
+1. [[https://github.com/powerline/fonts][Install powerline font]]
 2. [[https://gist.github.com/derhuerst/12a1558a4b408b3b2b6e][Install zsh]]
 3. ln -s `pwd`.//zsh/.zshrc ~/.zshrc
 4. git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

@@ -1,123 +1,115 @@
 #+TITLE: Emacs Config
 #+TOC: true
 
-* Setup
+* Global configuration
 ** Self edit keybind
    This binding will bring you directly to this config.org file for editing
    #+BEGIN_SRC emacs-lisp
-   (defun find-config ()
-    "Edit config.org"
-    (interactive)
-    (find-file (concat user-emacs-directory "config.org")))
+     (defun find-config ()
+       "Edit config.org"
+       (interactive)
+       (find-file (concat user-emacs-directory "config.org")))
 
-  (global-set-key (kbd "C-c I") 'find-config)
-   
+     (global-set-key (kbd "C-c I") 'find-config)
    #+END_SRC
 
 ** Package management
    Install the [[https://melpa.org/#/use-package][use-package]] package.
-   
+
 #+BEGIN_SRC emacs-lisp
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
 #+END_SRC
 
-** Add interface configuration
+** Revert current buffer
    #+BEGIN_SRC emacs-lisp
-(setq inhibit-startup-message t)
-(tool-bar-mode -1)
-(fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<f5>") 'revert-buffer)
-(setq-default display-line-numbers 'relative)
-(column-number-mode 1)
    #+END_SRC
-
 ** Temporary files location
 #+BEGIN_SRC emacs-lisp
-(setq auto-save-file-name-transformations 
-`((".*", (concat user-emacs-directory "auto-save/") t)))
-
-(setq backup-directory-alist
-`((".", (concat user-emacs-directory "backups") t)))
-#+END_SRC
-
-#+RESULTS:
-| . | ~/.emacs.d/backups | t |
-
-** Theme
-*** Install solarized-theme
-    Install [[https://melpa.org/#/solarized-theme][solarized package.]]
-    
-#+BEGIN_SRC emacs-lis
-(use-package solarized-theme
-  :ensure t
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+  backup-by-copying t    ; Don't delink hardlinks
+  version-control t      ; Use version numbers on backups
+  delete-old-versions t  ; Automatically delete excess backups
+  kept-new-versions 20   ; how many of the newest versions to keep
+  kept-old-versions 5    ; and how many of the old
   )
 #+END_SRC
-*** Load theme
-#+BEGIN_SRC emacs-lisp
-  (load-theme 'solarized-dark t)
-#+END_SRC
+
+* Text editing
 ** Vim (evil mode)
    Install evil mode for vim editing
 *** Install dependency [[https://melpa.org/#/evil][Evil melpa]]
    #+BEGIN_SRC emacs-lisp
-(use-package evil
-  :ensure t ;; install the evil package if not installed
-  :init ;; tweak evil's configuration before loading it
-  (setq evil-search-module 'evil-search)
-  (setq evil-ex-complete-emacs-commands nil)
-  (setq evil-vsplit-window-right t)
-  (setq evil-split-window-below t)
-  (setq evil-shift-round nil)
-  (setq evil-want-C-u-scroll t)
-  :config ;; tweak evil after loading it
-  (evil-mode))
+     (use-package evil
+       :ensure t ;; install the evil package if not installed
+       :init ;; tweak evil's configuration before loading it
+       (setq evil-search-module 'evil-search)
+       (setq evil-ex-complete-emacs-commands nil)
+       (setq evil-vsplit-window-right t)
+       (setq evil-split-window-below t)
+       (setq evil-shift-round nil)
+       (setq evil-want-C-u-scroll t)
+       :config ;; tweak evil after loading it
+       (evil-mode))
 
-(defvar +evil-esc-hook '(t)
-  "A hook run after ESC is pressed in normal mode (invoked by
-`evil-force-normal-state'). If any hook returns non-nil, all hooks after it are
-ignored.")
+     (defvar +evil-esc-hook '(t)
+       "A hook run after ESC is pressed in normal mode (invoked by
+     `evil-force-normal-state'). If any hook returns non-nil, all hooks after it are
+     ignored.")
 
-(defun +evil*attach-escape-hook ()
-  "Run the `+evil-esc-hook'."
-  (cond ((minibuffer-window-active-p (minibuffer-window))
-	 ;; quit the minibuffer if open.
-	 (abort-recursive-edit))
-	((evil-ex-hl-active-p 'evil-ex-search)
-	 ;; disable ex search buffer highlights.
-	 (evil-ex-nohighlight))
-	(t
-	 ;; Run all escape hooks. If any returns non-nil, then stop there.
-	 (run-hook-with-args-until-success '+evil-esc-hook))))
+     (defun +evil*attach-escape-hook ()
+       "Run the `+evil-esc-hook'."
+       (cond ((minibuffer-window-active-p (minibuffer-window))
+              ;; quit the minibuffer if open.
+              (abort-recursive-edit))
+             ((evil-ex-hl-active-p 'evil-ex-search)
+              ;; disable ex search buffer highlights.
+              (evil-ex-nohighlight))
+             (t
+              ;; Run all escape hooks. If any returns non-nil, then stop there.
+              (run-hook-with-args-until-success '+evil-esc-hook))))
    #+END_SRC
 
-** Package testing
-  Install the [[https://melpa.org/#/try][Try package.]] 
-  
-  Do the following to temporary install a package.
-#+BEGIN_SRC quote
-M-x try PACKAGE_NAME
-#+END_SRC
+*** Change cursor color
+    #+BEGIN_SRC emacs-lisp
+      (setq evil-insert-state-cursor '(box "yellow")
+            evil-normal-state-cursor '(box "purple")
+            evil-visual-state-cursor '(box "blue"))
+    #+END_SRC
 
+** Space tabs
+Replace tabs by spaces
 #+BEGIN_SRC emacs-lisp
-
-(use-package try
-  :ensure t)
+  (setq-default indent-tabs-mode nil)
+  (setq tab-width 4)
 #+END_SRC
+** Remove trailing spaces
+   #+BEGIN_SRC emacs-lisp
+   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+   #+END_SRC
+** Autocomplete M-x
 
-** Cheat sheet
-Install the [[https://melpa.org/#/which-key][which-key package.]]
-This package adds the key bind cheat sheet at the bottom of the screen.
+** [[https://www.emacswiki.org/emacs/UndoTree][Undo tree]]
+   #+BEGIN_SRC emacs-lisp
+     (use-package undo-tree
+       :ensure t
+       :config
+       (global-undo-tree-mode 1))
+   #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-(use-package which-key
-  :ensure t
-  :config (which-key-mode))
-#+END_SRC
+** Install icons bundle
+   Install the [[https://melpa.org/#/all-the-icons][all-the-icons package.]]
+   #+BEGIN_SRC emacs-lisp
+     (use-package all-the-icons
+       :ensure t)
+(all-the-icons-install-fonts t)
+   #+END_SRC
+
 ** org mode
 *** Install org-bullets
-    Install the [[https://melpa.org/#/org-bullets][org-bullets package.]] 
+    Install the [[https://melpa.org/#/org-bullets][org-bullets package.]]
     This package replaces the stars and convert them into bullet points.
 #+BEGIN_SRC emacs-lisp
 (use-package org-bullets
@@ -127,28 +119,12 @@ This package adds the key bind cheat sheet at the bottom of the screen.
 #+END_SRC
 
 *** TODO add more org mode configuration
-** Auto-completion
-
+** Auto complete
 *** Install helm
-   Install the [[https://melpa.org/#/helm][helm package.]]
-   This package is resposible the core framework for auto completion.
-   
-#+BEGIN_SRC emacs-lisp
-(use-package helm
-  :ensure t
-  :init
-  (progn
-    (global-set-key (kbd "M-x") 'helm-M-x)
-    (global-set-key [C-tab] 'helm-mini)
-    (global-unset-key (kbd "C-z"))
-    (global-set-key (kbd "C-x b") 'helm-mini)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
-    ))
-#+END_SRC
 *** Install helm-swoop
     Install the [[https://melpa.org/#/helm-swoop][helm-swoop package.]]
     This is an advanced grep package. You can search the current file, multiple buffers, etc.
-    
+
 #+BEGIN_SRC quote
 - `M-x helm-swoop` when region active
 - `M-x helm-swoop` when the cursor is at any symbol
@@ -172,19 +148,159 @@ This package adds the key bind cheat sheet at the bottom of the screen.
     (global-set-key (kbd "C-s") 'helm-swoop)
     ))
 #+END_SRC
-*** TODO ac-helm
-** Window management
-*** Install [[https://melpa.org/#/ace-window][ace-window]]
-    This package will display numbers when you have more than 2 window and you try to change focus via C-x o.
-    
+*** Install the [[https://melpa.org/#/company][Company package]]
 #+BEGIN_SRC emacs-lisp
-(use-package ace-window
+  (use-package company
+    :ensure t
+    :config
+    (add-hook 'after-init-hook 'global-company-mode))
+
+  (setq company-idle-delay 0)
+#+END_SRC
+
+*** Install the autocompletion help
+    #+BEGIN_SRC emacs-lisp
+      (use-package company-quickhelp
+        :ensure t)
+      (company-quickhelp-mode 1)
+    #+END_SRC
+
+   Install the [[https://melpa.org/#/helm][helm package.]]
+   This package is resposible the core framework for auto completion.
+
+#+BEGIN_SRC emacs-lisp
+(use-package helm
   :ensure t
   :init
   (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-forground :height 3.0)))))
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key [C-tab] 'helm-mini)
+    (global-unset-key (kbd "C-z"))
+    (global-set-key (kbd "C-x b") 'helm-mini)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
     ))
+#+END_SRC
+** Window management
+*** Install [[https://melpa.org/#/ace-window][ace-window]]
+    This package will display numbers when you have more than 2 window and you try to change focus via C-x o.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :ensure t
+    :init
+    (progn
+      (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+      (global-set-key [remap other-window] 'ace-window)
+      (custom-set-faces
+       '(aw-leading-char-face
+         ((t (:inherit ace-jump-face-forground :height 3.0)))))
+      ))
+#+END_SRC
+* Keybinding
+** Macos rebind
+   #+BEGIN_SRC emacs-lisp
+   (setq mac-command-modifier 'meta
+   mac-option-modifier 'none)
+   #+END_SRC
+** Goto last change buffer
+   Go to the last change position within the buffer
+   #+BEGIN_SRC emacs-lisp
+     (use-package goto-last-change
+       :ensure t
+       :bind (("C-;" . goto-last-chagne)))
+   #+END_SRC
+
+**  [[https://melpa.org/#/neotree][Install neotree]]
+   #+BEGIN_SRC emacs-lisp
+     (use-package neotree
+       :ensure t)
+
+     (global-set-key [f8] 'neotree-toggle)
+     (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+   #+END_SRC
+
+** Cheat sheet
+Install the [[https://melpa.org/#/which-key][which-key package.]]
+This package adds the key bind cheat sheet at the bottom of the screen.
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+#+END_SRC
+* Appearance
+** Remove splash screen
+   #+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+   #+END_SRC
+** Remove tool bar
+   #+BEGIN_SRC emacs-lisp
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+   #+END_SRC
+** Change yes-or-no message
+   #+BEGIN_SRC emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)
+   #+END_SRC
+** Set relative line number
+   #+BEGIN_SRC emacs-lisp
+(setq-default display-line-numbers 'relative)
+   #+END_SRC
+** Set cursor position
+   #+BEGIN_SRC emacs-lisp
+(column-number-mode 1)
+   #+END_SRC
+
+** Line wrap
+   #+BEGIN_SRC emacs-lisp
+   (global-visual-line-mode 1)
+   #+END_SRC
+** Disactivate error noise
+    #+BEGIN_SRC emacs-lisp
+    (setq ring-bell-function 'ignore)
+    #+END_SRC
+** Emacs theme
+*** Install solarized-theme
+    Install [[https://melpa.org/#/solarized-theme][solarized package.]]
+
+#+BEGIN_SRC emacs-lis
+(use-package solarized-theme
+  :ensure t)
+#+END_SRC
+*** Load theme
+#+BEGIN_SRC emacs-lisp
+  (load-theme 'solarized-dark t)
+#+END_SRC
+** [[https://melpa.org/#/powerline][Install powerline]]
+   Before install powerline, make sure you intall this [[https://github.com/powerline/fonts][font pack]]
+   #+BEGIN_SRC emacs-lisp
+     (use-package powerline
+       :ensure t)
+
+     (powerline-default-theme)
+   #+END_SRC
+
+** Hightlight current line
+#+BEGIN_SRC emacs-lisp
+  (global-hl-line-mode 1)
+#+END_SRC
+** Titlebar
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+     (add-to-list 'default-frame-alist '(ns-appearance . dark))
+   #+END_SRC
+
+* Extra packages
+** Package testing
+  Install the [[https://melpa.org/#/try][Try package.]]
+
+  Do the following to temporary install a package.
+#+BEGIN_SRC quote
+M-x try PACKAGE_NAME
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package try
+  :ensure t)
 #+END_SRC

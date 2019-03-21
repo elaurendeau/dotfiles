@@ -196,6 +196,25 @@ Replace tabs by spaces
          ((t (:inherit ace-jump-face-forground :height 3.0)))))
       ))
 #+END_SRC
+** Project management
+*** Install the [[https://melpa.org/#/projectile][projectile package.]]
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :config
+    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    (projectile-mode +1))
+#+END_SRC
+
+*** Install [[https://melpa.org/#/helm-projectile][helm-projectile package]]
+    #+BEGIN_SRC emacs-lisp
+      (use-package helm-projectile
+        :ensure t
+        :config
+        (helm-projectile-on))
+    #+END_SRC
+
 * Keybinding
 ** Macos rebind
    #+BEGIN_SRC emacs-lisp

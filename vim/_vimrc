@@ -2,7 +2,7 @@
 set nocompatible
 set encoding=utf-8
 set hidden
-filetype plugin indent on
+
 syntax on
 set synmaxcol=2048                " Don't syntax highlight super-long lines (for performance)
 
@@ -45,15 +45,17 @@ set title                         " show file in titlebar
 set scrolloff=3                   " When the page starts to scroll, keep the cursor 3 lines from top/bottom
 set cmdheight=2                   " Make command line two lines high
 
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
 " Use the same symbols as TextMate for tabstops and EOLs
 " Show Invisibles (http://vimcasts.org/episodes/show-invisibles/) 
 set list
 set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
-
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
@@ -99,9 +101,6 @@ cmap w!! w !sudo tee % >/dev/null
 if filereadable(expand("~/.vimrc.local"))
 	source ~/.vimrc.local
 endif
-
-
-
 
 "Alt + movement in insert mode will move
 imap <A-h> <C-o>h

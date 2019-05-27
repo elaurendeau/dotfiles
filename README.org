@@ -18,3 +18,8 @@
 2. [[https://gist.github.com/derhuerst/12a1558a4b408b3b2b6e][Install zsh]]
 3. ln -s `pwd`.//zsh/.zshrc ~/.zshrc
 4. git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+* VScode
+1. [[https://github.com/shanalikhan/code-settings-sync][Install Settings Sync extension]]
+2. insert github token
+** [[https://gist.github.com/elaurendeau/e3b31e9bfe6122922024830ebf9d5387][Gist link]]

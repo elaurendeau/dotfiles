@@ -67,6 +67,7 @@ plugins=(
 	vi-mode
 	zsh-syntax-highlighting
 	elixir
+	gradle
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 alias evim="vim ~/_vimrc"
 alias ealias="vim ~/.zshrc"
 alias ralias="source ~/.zshrc"
+alias galias="alias | grep $@"
 alias ll="ls -la"
 alias emacsdir="cd ~/.emacs.d"
 
@@ -127,15 +129,9 @@ export POSTGRES_URL="jdbc:postgresql://localhost:8089/db"
 export POSTGRES_USERNAME="db"
 export POSTGRES_PASSWORD="db"
 
-alias aab='docker build -t ansible-tester .'
-alias aar='docker run -d -p "8092:22" --name "ansible-tester" ansible-tester'
-alias aas='docker rm -f `docker ps --filter "name=ansible-tester" -qa`'
-alias aap='ansible-playbook -i hosts.yml server-configuration-playbook.yml'
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/laue015/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/laue015/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/laue015/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/laue015/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-alias gcssh='gcloud alpha cloud-shell ssh'
